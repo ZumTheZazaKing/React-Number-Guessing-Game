@@ -42,6 +42,8 @@ function App(){
   let [randomNumber, setRandomNumber] = useState(0);
   function changeRandomNumber(value){setRandomNumber(value)}
 
+  let [hint, setHint] = useState("Guess The Number!");
+
   let [chances, setChances] = useState(10);
   function subtractChances(){setChances(chances-1)}
   function resetChances(){setChances(10)}
@@ -77,6 +79,8 @@ function App(){
     onChangeInput={onChangeInput}
     setResultResponse={setResultResponse}
     resetInput={resetInput}
+    hint={hint}
+    setHint={setHint}
     />
     <Result randomNumber={randomNumber} resultResponse={resultResponse}/>
 

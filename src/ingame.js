@@ -32,22 +32,31 @@ export function Ingame(props){
 
     function checkAnswer(e){
         e.preventDefault();
-
         props.resetInput();
 
-        if(parseInt(props.userInput) == props.randomNumber){
+        if(parseInt(props.userInput) < props.randomNumber){
+            props.setHint("Guess is Lower");
+            props.changeMin(parseInt(props.userInput)+1);
+
+        } else if(parseInt(props.userInput) > props.randomNumber){
+            props.setHint("Guess is Higher");
+            props.changeMax(parseInt(props.userInput)-1);
+
+        }
+
+        if(parseInt(props.userInput) === props.randomNumber){
             props.setResultResponse("Congrats! You guessed the number");
         } else {
             props.subtractChances();
 
-            if(props.chances == 1){
+            if(parseInt(props.chances) === 1){
                 props.setResultResponse("GAME OVER");
             }
         }
     }
 
     return <div id="ingame">
-      <h3>Guess The Number!</h3>
+      <h3>{props.hint}</h3>
       <p>Current Range: {props.min} - {props.max}</p>
       <div id="bar">
         <div id="limitBefore"></div>
