@@ -2,46 +2,12 @@ import React from 'react';
 import { useState,useRef } from 'react';
 import ReactDOM from 'react-dom';
 import './style.css';
+import { MainMenu } from './mainMenu.js';
+import { DifficultyMenu } from './difficulty.js';
+import { Ingame } from './ingame.js';
 import reportWebVitals from './reportWebVitals';
 
 
-function MainMenu(){
-  return <div id="mainMenu">
-    <h2>Number Guessing Game</h2>
-    <form>
-      <input type="text" placeholder="Enter Name" required/>
-      <br/><br/>
-      <input type="submit" value="Start"/>
-    </form>
-  </div>;
-}
-
-function DifficultyMenu(){
-  return <div id="difficulty">
-    <p>Greetings, !</p>
-    <h3>Difficulty</h3>
-    <button>Easy</button>
-    <button>Normal</button>
-    <button>Hard</button>
-  </div>;
-}
-
-function Ingame(){
-  return <div id="ingame">
-    <h3>Guess The Number!</h3>
-    <p>Current Range: </p>
-    <div id="bar">
-      <div id="limitBefore"></div>
-      <div id="range"></div>
-      <div id="limitAfter"></div>
-    </div>
-    <p id="chances">Chances: </p>
-    <form>
-      <input type="number" min="0" max="100" required/>
-      <input type="submit" value="Guess"/>
-    </form>
-  </div>;
-}
 
 function Result(){
   return <div id="result">
