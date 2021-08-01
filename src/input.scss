@@ -1,14 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
+
+$globalFont:'Noto Sans JP', sans-serif;
+$bodyFont:Arial, Helvetica, sans-serif;
+$titleFont: 'Staatliches', cursive;
+$altTitleFont:'Kanit', sans-serif;
+
+@mixin buttonDefault(){
+    padding: 5px 10px;
+    border: 5px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
 body{
     background: burlywood;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    #ingame{
+    #container{
 
-        #bar{
-            width: 80%;
-            border: 1px solid black;
-            height: 50px;
+        background: white;
+        border: 2px solid black;
+        padding: 10px;
+        text-align: center;
+
+        button, input[type=submit]{
+            cursor: pointer;
+        }
+
+        #mainMenu{
+            h1{
+                margin: 0;
+                padding: 0;
+                margin-bottom: 20px;
+                font-family: $titleFont;
+            }
+            
+            input[type=text]{
+                padding: 5px;
+                text-align: center;
+                font-size: 16px;
+                background-color: rgb(236, 236, 236);
+                border: none;
+                outline: none;
+            }
+
+            input[type=submit]{
+                @include buttonDefault();
+                background-color: rgb(0, 180, 0);
+                color: white;
+            }
+
+            input[type=submit]:hover{
+                background-color: green;
+            }
+        }
+
+        #difficulty{
+
+            p{
+                font-family: $altTitleFont;
+                font-size: 18px;
+            }
+
+            h3{
+                font-family: $globalFont;
+            }
+
+            button{
+                @include buttonDefault();
+                margin-right: 5px;
+                margin-left: 5px;
+            }
+
+            [value=easy]{
+                background: rgb(0, 180, 0);
+            }
+            [value=normal]{
+                background: orange;
+            }
+            [value=hard]{
+                background: red;
+            }
+
+        }
+
+        #ingame{
+
+            h3{
+                font-family: $altTitleFont;
+            }
+
+            #rangeText, #chances{
+                font-family: $titleFont;
+                font-size: 18px;
+            }
+            
+
+            #bar{
+                width: 80%;
+                border: 1px solid black;
+                height: 50px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            input[type=number]{
+                padding: 5px;
+                font-size: 16px;
+                background-color: rgb(243, 243, 243);
+                border: none;
+                outline: none;
+            }
+
+            input[type=submit]{
+                @include buttonDefault();
+                border-radius: 0;
+                background-color: rgb(216, 215, 215);
+            }
+
+            input[type=submit]:hover{
+                background-color: rgb(189, 189, 189);
+            }
+    
+        }
+
+
+        #result{
+            h3{
+                font-family: $titleFont;
+            }
+
+            p{
+                font-family: $altTitleFont;
+                font-size: 16px;
+            }
+
+            button{
+                @include buttonDefault();
+                background-color: deeppink;
+                color: white;
+            }
         }
 
     }
+
+    
 
 }

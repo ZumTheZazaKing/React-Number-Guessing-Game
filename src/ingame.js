@@ -57,7 +57,7 @@ export function Ingame(props){
 
     return <div id="ingame">
       <h3>{props.hint}</h3>
-      <p>Current Range: {props.min} - {props.max}</p>
+      <p id="rangeText">Current Range: {props.min} - {props.max}</p>
       <div id="bar">
         <div id="limitBefore"></div>
         <div id="range"></div>
