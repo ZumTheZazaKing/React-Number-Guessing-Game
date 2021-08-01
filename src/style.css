@@ -1,5 +1,10 @@
 body {
   background: burlywood;
 }
+body #ingame #bar {
+  width: 80%;
+  border: 1px solid black;
+  height: 50px;
+}
 
 /*# sourceMappingURL=style.css.map */
