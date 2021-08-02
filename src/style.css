@@ -49,6 +49,7 @@ body #container #mainMenu input[type=submit]:hover {
 body #container #difficulty p {
   font-family: "Kanit", sans-serif;
   font-size: 18px;
+  margin: 0;
 }
 body #container #difficulty h3 {
   font-family: "Noto Sans JP", sans-serif;
@@ -74,6 +75,7 @@ body #container #difficulty [value=hard] {
 }
 body #container #ingame h3 {
   font-family: "Kanit", sans-serif;
+  margin: 0;
 }
 body #container #ingame #rangeText, body #container #ingame #chances {
   font-family: "Staatliches", cursive;
@@ -108,6 +110,7 @@ body #container #ingame input[type=submit]:hover {
 }
 body #container #result h3 {
   font-family: "Staatliches", cursive;
+  margin: 0;
 }
 body #container #result p {
   font-family: "Kanit", sans-serif;
@@ -122,6 +125,10 @@ body #container #result button {
   border-radius: 5px;
   background-color: deeppink;
   color: white;
+}
+
+.hide {
+  display: none !important;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -4,9 +4,10 @@ export function DifficultyMenu(props){
         props.onClick(e);
         props.changeDifficultyValue(e);
         props.resetChances();
+        props.difficultyToIngame();
     }
 
-    return <div id="difficulty">
+    return <div id="difficulty" className="hide" ref={props.difficultyRef}>
       <p>Greetings, {props.username}!</p>
       <h3>Difficulty</h3>
       <button onClick={e => {changeValues(e)}} value="easy" name="100">Easy</button>

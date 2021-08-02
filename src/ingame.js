@@ -47,16 +47,18 @@ export function Ingame(props){
 
         if(parseInt(props.userInput) === props.randomNumber){
             props.setResultResponse("Congrats! You guessed the number");
+            props.ingameToResult();
         } else {
             props.subtractChances();
 
             if(parseInt(props.chances) === 1){
                 props.setResultResponse("GAME OVER");
+                props.ingameToResult();
             }
         }
     }
 
-    return <div id="ingame">
+    return <div id="ingame" className="hide" ref={props.ingameRef}>
       <h3>{props.hint}</h3>
       <p id="rangeText">Current Range: {props.min} - {props.max}</p>
       <div id="bar">

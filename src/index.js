@@ -10,10 +10,10 @@ import reportWebVitals from './reportWebVitals';
 
 
 function Result(props){
-  return <div id="result">
+  return <div id="result" className="hide" ref={props.resultRef}>
     <h3>{props.resultResponse}</h3>
     <p>The number was {props.randomNumber}</p>
-    <button>Play Again</button>
+    <button onClick={() => {props.resultToMain()}}>Play Again</button>
   </div>;
 }
 
@@ -54,17 +54,45 @@ function App(){
 
   let [resultResponse, setResultResponse] = useState("");
 
+  let mainMenuRef = useRef();
+  let difficultyRef = useRef();
+  let ingameRef = useRef();
+  let resultRef = useRef();
+
+  function start(){
+    mainMenuRef.current.className = "hide";
+    difficultyRef.current.className = "";
+  }
+
+  function difficultyToIngame(){
+    difficultyRef.current.className = "hide";
+    ingameRef.current.className = "";
+  }
+
+  function ingameToResult(){
+    ingameRef.current.className = "hide";
+    resultRef.current.className = "";
+  }
+
+  function resultToMain(){
+    resultRef.current.className = "hide";
+    mainMenuRef.current.className = "";
+  }
+
 
   return <div id="container">
 
-    <MainMenu handleChange={changeUsername}/>
+    <MainMenu handleChange={changeUsername} mainMenuRef={mainMenuRef} start={start}/>
     <DifficultyMenu 
     username={username} 
     difficulty={difficulty} 
     onClick={changeDifficulty}
     changeDifficultyValue={changeDifficultyValue}
-    resetChances={resetChances}/>
-    <Ingame 
+    resetChances={resetChances}
+    difficultyRef={difficultyRef}
+    difficultyToIngame={difficultyToIngame}/>
+    <Ingame
+    ingameRef={ingameRef} 
     changeMin={changeMin} 
     changeMax={changeMax}
     min={minRange} 
@@ -81,8 +109,13 @@ function App(){
     resetInput={resetInput}
     hint={hint}
     setHint={setHint}
+    ingameToResult={ingameToResult}
     />
-    <Result randomNumber={randomNumber} resultResponse={resultResponse}/>
+    <Result 
+    randomNumber={randomNumber} 
+    resultResponse={resultResponse} 
+    resultRef={resultRef}
+    resultToMain={resultToMain}/>
 
   </div>
 
