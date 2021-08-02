@@ -28,6 +28,7 @@ export function Ingame(props){
     useEffect(() => {
         changeRange();
         setRandomNumber();
+        props.changeMin(0);
     }, [props.difficulty]);
 
     function checkAnswer(e){
