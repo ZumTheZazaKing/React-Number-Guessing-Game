@@ -123,10 +123,10 @@ body #container #ingame #rangeText {
 }
 body #container #ingame #bar {
   width: 80%;
-  border: 1px solid black;
   height: 50px;
   margin-left: auto;
   margin-right: auto;
+  display: flex;
 }
 body #container #ingame input[type=number] {
   padding: 5px;
@@ -147,6 +147,14 @@ body #container #ingame input[type=submit] {
 }
 body #container #ingame input[type=submit]:hover {
   background-color: #bdbdbd;
+}
+body #container #ingame #limitBefore, body #container #ingame #limitAfter {
+  background-color: orange;
+  flex: 0%;
+}
+body #container #ingame #range {
+  background: green;
+  flex: 100%;
 }
 body #container #result h3 {
   font-family: "Staatliches", cursive;

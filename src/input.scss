@@ -149,10 +149,10 @@ body{
 
             #bar{
                 width: 80%;
-                border: 1px solid black;
                 height: 50px;
                 margin-left: auto;
                 margin-right: auto;
+                display: flex;
             }
 
             input[type=number]{
@@ -171,6 +171,16 @@ body{
 
             input[type=submit]:hover{
                 background-color: rgb(189, 189, 189);
+            }
+
+            #limitBefore, #limitAfter{
+                background-color: orange;
+                flex: 0%;
+            }
+
+            #range{
+                background: green;
+                flex: 100%;
             }
     
         }

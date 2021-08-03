@@ -31,6 +31,10 @@ export function Ingame(props){
         props.changeMin(0);
     }, [props.difficulty]);
 
+    useEffect(() => {
+        props.updateRange();
+    }, [props.hint])
+
     function checkAnswer(e){
         e.preventDefault();
         props.resetInput();
@@ -62,9 +66,9 @@ export function Ingame(props){
       <h3>{props.hint}</h3>
       <p id="rangeText">Current Range: {props.min} - {props.max}</p>
       <div id="bar">
-        <div id="limitBefore"></div>
-        <div id="range"></div>
-        <div id="limitAfter"></div>
+        <div id="limitBefore" ref={props.limitBeforeRef}></div>
+        <div id="range" ref={props.rangeRef}></div>
+        <div id="limitAfter" ref={props.limitAfterRef}></div>
       </div>
       <p id="chances">Chances: {props.chances}</p>
       <form onSubmit={checkAnswer}>

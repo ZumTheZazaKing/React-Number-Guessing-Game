@@ -13,7 +13,7 @@ function Result(props){
   return <div id="result" className="hide" ref={props.resultRef}>
     <h3>{props.resultResponse}</h3>
     <p>The number was {props.randomNumber}</p>
-    <button onClick={() => {props.resultToMain()}}>Play Again</button>
+    <button onClick={() => {props.resultToMain(); props.reset()}}>Play Again</button>
   </div>;
 }
 
@@ -27,7 +27,7 @@ function App(){
   let [username, setUsername] = useState("");
   function changeUsername(e){setUsername(e.target.value)}
 
-  let [difficulty, setDifficulty] = useState("easy");
+  let [difficulty, setDifficulty] = useState("");
   function changeDifficulty(e){setDifficulty(e.target.value);}
 
   let [difficultyValue, setDifficultyValue] = useState(100);
@@ -54,10 +54,22 @@ function App(){
 
   let [resultResponse, setResultResponse] = useState("");
 
+  function reset(){
+    setDifficulty("");
+    setDifficultyValue(100);
+    setMinRange(0);
+    setMaxRange(100);
+    setRandomNumber(0);
+    setHint("Guess The Number!");
+    setChances(10)
+  }
+
   let mainMenuRef = useRef();
   let difficultyRef = useRef();
   let ingameRef = useRef();
   let resultRef = useRef();
+
+  
 
   function start(){
     mainMenuRef.current.className = "hide";
@@ -77,6 +89,16 @@ function App(){
   function resultToMain(){
     resultRef.current.className = "hide";
     mainMenuRef.current.className = "";
+  }
+
+  let limitBeforeRef = useRef();
+  let limitAfterRef = useRef();
+  let rangeRef = useRef();
+
+  function updateRange(){
+    limitBeforeRef.current.style.flex = minRange + "%";
+    rangeRef.current.style.flex = maxRange - minRange + "%";
+    limitAfterRef.current.style.flex = difficultyValue - maxRange + "%";
   }
 
 
@@ -110,13 +132,18 @@ function App(){
     hint={hint}
     setHint={setHint}
     ingameToResult={ingameToResult}
+    limitBeforeRef={limitBeforeRef}
+    rangeRef={rangeRef}
+    limitAfterRef={limitAfterRef}
+    updateRange={updateRange}
     />
     <Result 
     randomNumber={randomNumber} 
     resultResponse={resultResponse} 
     resultRef={resultRef}
-    resultToMain={resultToMain}/>
-
+    resultToMain={resultToMain}
+    reset={reset}/>
+    
   </div>
 
 }
