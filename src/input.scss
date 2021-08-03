@@ -24,18 +24,48 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100vh;
+
+    .credit{
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @keyframes rotate{
+            from{transform: rotate(0deg);}
+            to{transform: rotate(360deg);}
+        }
+
+        img{
+            content: url(./logo.svg);
+            animation: rotate 10s linear infinite;
+        }
+
+        p{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: bold;
+        }
+
+    }
+
+
 
     #container{
 
         background: white;
-        border: 2px solid black;
+        border-radius: 5px;
         padding: 10px;
         text-align: center;
+        border: 2px solid black;
 
         button, input[type=submit]{
             cursor: pointer;
         }
 
+        
         #mainMenu{
             h1{
                 margin: 0;
@@ -158,6 +188,16 @@ body{
 
     
 
+}
+
+
+.footer{
+    position: absolute;
+    bottom: 5px;
+    p{
+        font-size: 14px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
 }
 
 

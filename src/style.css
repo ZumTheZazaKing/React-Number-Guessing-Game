@@ -9,12 +9,38 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100vh;
+}
+body .credit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+body .credit img {
+  content: url(./logo.svg);
+  animation: rotate 10s linear infinite;
+}
+body .credit p {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
 }
 body #container {
   background: white;
-  border: 2px solid black;
+  border-radius: 5px;
   padding: 10px;
   text-align: center;
+  border: 2px solid black;
 }
 body #container button, body #container input[type=submit] {
   cursor: pointer;
@@ -125,6 +151,15 @@ body #container #result button {
   border-radius: 5px;
   background-color: deeppink;
   color: white;
+}
+
+.footer {
+  position: absolute;
+  bottom: 5px;
+}
+.footer p {
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .hide {
