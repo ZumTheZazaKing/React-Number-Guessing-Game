@@ -107,6 +107,20 @@ body #container #ingame #rangeText, body #container #ingame #chances {
   font-family: "Staatliches", cursive;
   font-size: 18px;
 }
+body #container #ingame #rangeText {
+  animation: resonance 1s ease-in infinite;
+}
+@keyframes resonance {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 body #container #ingame #bar {
   width: 80%;
   border: 1px solid black;

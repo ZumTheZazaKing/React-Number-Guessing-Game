@@ -136,6 +136,16 @@ body{
                 font-size: 18px;
             }
             
+            #rangeText{
+                animation: resonance 1s ease-in infinite;
+            }
+
+            @keyframes resonance{
+                0%{opacity: 1;}
+                50%{opacity: 0.4;}
+                100%{opacity: 1;}
+            }
+            
 
             #bar{
                 width: 80%;
