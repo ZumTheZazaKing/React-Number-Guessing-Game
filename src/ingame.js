@@ -33,7 +33,7 @@ export function Ingame(props){
 
     useEffect(() => {
         props.updateRange();
-    }, [props.hint])
+    }, [props.userInput])
 
     function checkAnswer(e){
         e.preventDefault();

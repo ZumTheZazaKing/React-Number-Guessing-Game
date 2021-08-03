@@ -61,7 +61,10 @@ function App(){
     setMaxRange(100);
     setRandomNumber(0);
     setHint("Guess The Number!");
-    setChances(10)
+    setChances(10);
+    limitBeforeRef.current.style.flex = 0;
+    rangeRef.current.style.flex = 100 + "%";
+    limitAfterRef.current.style.flex = 0;
   }
 
   let mainMenuRef = useRef();
