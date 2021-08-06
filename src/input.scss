@@ -199,7 +199,15 @@ body{
 
             button{
                 @include buttonDefault();
+            }
+
+            #playAgain{
                 background-color: deeppink;
+                color: white;
+            }
+
+            #leaderboard{
+                background: orange;
                 color: white;
             }
         }

@@ -13,12 +13,16 @@ function Result(props){
   return <div id="result" className="hide" ref={props.resultRef}>
     <h3>{props.resultResponse}</h3>
     <p>The number was {props.randomNumber}</p>
-    <button onClick={() => {props.resultToMain(); props.reset()}}>Play Again</button>
+    <button id="playAgain" onClick={() => {props.resultToMain(); props.reset()}}>Play Again</button>
+    <br/><br/>
+    <button id="leaderboard" onClick={() => {props.resultToLeaderBoard()}}>Leaderboard</button>
   </div>;
 }
 
-function Leaderboard(){
-  return <div></div>;
+function Leaderboard(props){
+  return <div id="leaderboard" className="hide" ref={props.leaderboardRef}>
+    <h3>Local Leaderboard</h3>
+  </div>;
 }
 
 
@@ -66,11 +70,13 @@ function App(){
     rangeRef.current.style.flex = 100 + "%";
     limitAfterRef.current.style.flex = 0;
   }
+  
 
   let mainMenuRef = useRef();
   let difficultyRef = useRef();
   let ingameRef = useRef();
   let resultRef = useRef();
+  let leaderboardRef = useRef();
 
   
 
@@ -92,6 +98,11 @@ function App(){
   function resultToMain(){
     resultRef.current.className = "hide";
     mainMenuRef.current.className = "";
+  }
+
+  function resultToLeaderBoard(){
+    resultRef.current.className = "hide";
+    leaderboardRef.current.className = "";
   }
 
   let limitBeforeRef = useRef();
@@ -145,7 +156,9 @@ function App(){
     resultResponse={resultResponse} 
     resultRef={resultRef}
     resultToMain={resultToMain}
-    reset={reset}/>
+    reset={reset}
+    resultToLeaderBoard={resultToLeaderBoard}/>
+    <Leaderboard leaderboardRef={leaderboardRef}/>
     
   </div>
 
