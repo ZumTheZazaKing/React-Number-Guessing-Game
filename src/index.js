@@ -21,7 +21,8 @@ function Result(props){
 
 function Leaderboard(props){
   return <div id="leaderboard" className="hide" ref={props.leaderboardRef}>
-    <h3>Local Leaderboard</h3>
+    <h2>Local Leaderboard</h2>
+    <button onClick={() => {props.leaderboardToResult()}}>Return</button>
   </div>;
 }
 
@@ -105,6 +106,11 @@ function App(){
     leaderboardRef.current.className = "";
   }
 
+  function leaderboardToResult(){
+    resultRef.current.className = "";
+    leaderboardRef.current.className = "hide";
+  }
+
   let limitBeforeRef = useRef();
   let limitAfterRef = useRef();
   let rangeRef = useRef();
@@ -158,7 +164,10 @@ function App(){
     resultToMain={resultToMain}
     reset={reset}
     resultToLeaderBoard={resultToLeaderBoard}/>
-    <Leaderboard leaderboardRef={leaderboardRef}/>
+    <Leaderboard 
+    leaderboardRef={leaderboardRef}
+    leaderboardToResult={leaderboardToResult}
+    />
     
   </div>
 

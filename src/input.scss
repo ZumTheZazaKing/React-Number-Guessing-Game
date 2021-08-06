@@ -212,6 +212,21 @@ body{
             }
         }
 
+
+        #leaderboard{
+
+            h2{
+                font-family: $altTitleFont;
+            }
+
+            button{
+                @include buttonDefault();
+                background: skyblue;
+                color: white;
+            }
+            
+        }
+
     }
 
     
