@@ -8,11 +8,11 @@ import { Ingame } from './ingame.js';
 import reportWebVitals from './reportWebVitals';
 
 
-
 function Result(props){
   return <div id="result" className="hide" ref={props.resultRef}>
     <h3>{props.resultResponse}</h3>
     <p>The number was {props.randomNumber}</p>
+    <p>Time Taken: {props.timeTaken}s</p>
     <button id="playAgain" onClick={() => {props.resultToMain(); props.reset()}}>Play Again</button>
     <br/><br/>
     <button id="leaderboard" onClick={() => {props.resultToLeaderBoard()}}>Leaderboard</button>
@@ -58,6 +58,9 @@ function App(){
   function resetInput(){setUserInput("")}
 
   let [resultResponse, setResultResponse] = useState("");
+
+  let [timeTaken, setTimeTaken] = useState(0);
+  let [isRecording, setIsRecording] = useState(false);
 
   function reset(){
     setDifficulty("");
@@ -156,6 +159,8 @@ function App(){
     rangeRef={rangeRef}
     limitAfterRef={limitAfterRef}
     updateRange={updateRange}
+    timeTaken={timeTaken}
+    setTimeTaken={setTimeTaken}
     />
     <Result 
     randomNumber={randomNumber} 
@@ -163,10 +168,13 @@ function App(){
     resultRef={resultRef}
     resultToMain={resultToMain}
     reset={reset}
-    resultToLeaderBoard={resultToLeaderBoard}/>
+    resultToLeaderBoard={resultToLeaderBoard}
+    timeTaken={timeTaken}/>
+
     <Leaderboard 
     leaderboardRef={leaderboardRef}
     leaderboardToResult={leaderboardToResult}
+
     />
     
   </div>

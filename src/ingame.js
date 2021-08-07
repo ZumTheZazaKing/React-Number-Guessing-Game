@@ -29,11 +29,16 @@ export function Ingame(props){
         changeRange();
         setRandomNumber();
         props.changeMin(0);
+        props.setTimeTaken(0);
+        const interval = setInterval(() => {
+            props.setTimeTaken(seconds => seconds + 1)
+        }, 1000);
+        return () => clearInterval(interval);
     }, [props.difficulty]);
 
     useEffect(() => {
         props.updateRange();
-    }, [props.userInput])
+    }, [props.userInput]);
 
     function checkAnswer(e){
         e.preventDefault();
@@ -77,5 +82,6 @@ export function Ingame(props){
         value={props.userInput} required/>
         <input type="submit" value="Guess"/>
       </form>
+      <p>{props.timeTaken}s</p>
     </div>;
   }
