@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/React-Number-Guessing-Game/static/css/main.5db8422f.chunk.css",
-    "main.js": "/React-Number-Guessing-Game/static/js/main.1ef434c5.chunk.js",
-    "main.js.map": "/React-Number-Guessing-Game/static/js/main.1ef434c5.chunk.js.map",
-    "runtime-main.js": "/React-Number-Guessing-Game/static/js/runtime-main.eb1f63c7.js",
-    "runtime-main.js.map": "/React-Number-Guessing-Game/static/js/runtime-main.eb1f63c7.js.map",
-    "static/js/2.fb5cce16.chunk.js": "/React-Number-Guessing-Game/static/js/2.fb5cce16.chunk.js",
-    "static/js/2.fb5cce16.chunk.js.map": "/React-Number-Guessing-Game/static/js/2.fb5cce16.chunk.js.map",
-    "static/js/3.3a4fddd9.chunk.js": "/React-Number-Guessing-Game/static/js/3.3a4fddd9.chunk.js",
-    "static/js/3.3a4fddd9.chunk.js.map": "/React-Number-Guessing-Game/static/js/3.3a4fddd9.chunk.js.map",
+    "main.css": "/React-Number-Guessing-Game/static/css/main.4771ef84.chunk.css",
+    "main.js": "/React-Number-Guessing-Game/static/js/main.d52b88dc.chunk.js",
+    "main.js.map": "/React-Number-Guessing-Game/static/js/main.d52b88dc.chunk.js.map",
+    "runtime-main.js": "/React-Number-Guessing-Game/static/js/runtime-main.6d48c3f7.js",
+    "runtime-main.js.map": "/React-Number-Guessing-Game/static/js/runtime-main.6d48c3f7.js.map",
+    "static/js/2.2e61fcda.chunk.js": "/React-Number-Guessing-Game/static/js/2.2e61fcda.chunk.js",
+    "static/js/2.2e61fcda.chunk.js.map": "/React-Number-Guessing-Game/static/js/2.2e61fcda.chunk.js.map",
+    "static/js/3.7519163c.chunk.js": "/React-Number-Guessing-Game/static/js/3.7519163c.chunk.js",
+    "static/js/3.7519163c.chunk.js.map": "/React-Number-Guessing-Game/static/js/3.7519163c.chunk.js.map",
     "index.html": "/React-Number-Guessing-Game/index.html",
-    "static/css/main.5db8422f.chunk.css.map": "/React-Number-Guessing-Game/static/css/main.5db8422f.chunk.css.map",
-    "static/js/2.fb5cce16.chunk.js.LICENSE.txt": "/React-Number-Guessing-Game/static/js/2.fb5cce16.chunk.js.LICENSE.txt",
+    "static/css/main.4771ef84.chunk.css.map": "/React-Number-Guessing-Game/static/css/main.4771ef84.chunk.css.map",
+    "static/js/2.2e61fcda.chunk.js.LICENSE.txt": "/React-Number-Guessing-Game/static/js/2.2e61fcda.chunk.js.LICENSE.txt",
     "static/media/style.css": "/React-Number-Guessing-Game/static/media/logo.6ce24c58.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.eb1f63c7.js",
-    "static/js/2.fb5cce16.chunk.js",
-    "static/css/main.5db8422f.chunk.css",
-    "static/js/main.1ef434c5.chunk.js"
+    "static/js/runtime-main.6d48c3f7.js",
+    "static/js/2.2e61fcda.chunk.js",
+    "static/css/main.4771ef84.chunk.css",
+    "static/js/main.d52b88dc.chunk.js"
   ]
 }
