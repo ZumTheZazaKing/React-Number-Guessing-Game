@@ -33,6 +33,7 @@ body{
         display: flex;
         align-items: center;
         justify-content: center;
+        z-index: -1;
 
         @keyframes rotate{
             from{transform: rotate(0deg);}
@@ -47,6 +48,7 @@ body{
         p{
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-weight: bold;
+            font-size: 14px;
         }
 
     }
@@ -182,6 +184,10 @@ body{
                 background: green;
                 flex: 100%;
             }
+
+            p#timeTaken{
+                font-family: Arial, Helvetica, sans-serif;
+            }
     
         }
 
@@ -215,14 +221,66 @@ body{
 
         #leaderboard{
 
+            table{
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 10px;
+            }
+
+            table,th,td{
+                border: 2px solid black;
+                border-collapse: collapse;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            th,td{
+                padding: 5px 10px;
+            }
+
+            tr:nth-child(1){
+                background-color: skyblue;
+            }
+
+            tr:nth-child(2){
+                background-color: gold;
+            }
+
+            tr:nth-child(3){
+                background-color: silver;
+            }
+
+            tr:nth-child(4){
+                background-color: rgb(219, 92, 42);
+            }
+
             h2{
                 font-family: $altTitleFont;
+                margin: 0;
+                margin-bottom: 10px;
             }
 
             button{
                 @include buttonDefault();
                 background: skyblue;
                 color: white;
+            }
+
+            #easy, #normal,#hard{
+                border-radius: 0;
+                background: grey;
+                transition: .2s;
+            }
+
+            #easy{
+                border-radius: 5px 0 0 0;
+            }
+
+            #hard{
+                border-radius: 0 5px 0 0;
+            }
+
+            .selected{
+                color: black;
             }
             
         }
@@ -238,7 +296,7 @@ body{
     position: absolute;
     bottom: 5px;
     p{
-        font-size: 14px;
+        font-size: 11px;
         font-family: Arial, Helvetica, sans-serif;
     }
 }

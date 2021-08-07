@@ -33,7 +33,7 @@ export function Ingame(props){
         const interval = setInterval(() => {
             props.setTimeTaken(seconds => seconds + 1)
         }, 1000);
-        return () => clearInterval(interval);
+        return () => {clearInterval(interval)};
     }, [props.difficulty]);
 
     useEffect(() => {
@@ -56,12 +56,26 @@ export function Ingame(props){
 
         if(parseInt(props.userInput) === props.randomNumber){
             props.setResultResponse("Congrats! You guessed the number");
+            props.setRecordedTime(props.timeTaken);
+
+            let playerName = props.username;
+            let playerTime = props.timeTaken;
+
+            if(props.difficulty === "easy"){
+                props.setEasyLeaders([...props.easyLeaders, {"username":playerName, "time":playerTime}]);
+            } else if (props.difficulty === "normal"){
+                props.setNormalLeaders([...props.normalLeaders, {"username":playerName, "time":playerTime}]);
+            } else if (props.difficulty === "hard"){
+                props.setHardLeaders([...props.hardLeaders, {"username":playerName, "time":playerTime}]);
+            }
+
             props.ingameToResult();
         } else {
             props.subtractChances();
 
             if(parseInt(props.chances) === 1){
                 props.setResultResponse("GAME OVER");
+                props.setRecordedTime(props.timeTaken);
                 props.ingameToResult();
             }
         }
@@ -82,6 +96,6 @@ export function Ingame(props){
         value={props.userInput} required/>
         <input type="submit" value="Guess"/>
       </form>
-      <p>{props.timeTaken}s</p>
+      <p id="timeTaken">{props.timeTaken}s</p>
     </div>;
   }

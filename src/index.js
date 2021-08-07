@@ -12,7 +12,7 @@ function Result(props){
   return <div id="result" className="hide" ref={props.resultRef}>
     <h3>{props.resultResponse}</h3>
     <p>The number was {props.randomNumber}</p>
-    <p>Time Taken: {props.timeTaken}s</p>
+    <p>Time Taken: {props.recordedTime}s</p>
     <button id="playAgain" onClick={() => {props.resultToMain(); props.reset()}}>Play Again</button>
     <br/><br/>
     <button id="leaderboard" onClick={() => {props.resultToLeaderBoard()}}>Leaderboard</button>
@@ -20,14 +20,82 @@ function Result(props){
 }
 
 function Leaderboard(props){
+  let bil = 1;
+  let leaderBoardDeter = props.leaderboardSelect;
+  let leadersArr;
+  if(leaderBoardDeter === "easy"){
+    leadersArr = props.easyLeaders;
+  } else if (leaderBoardDeter === "normal"){
+    leadersArr = props.normalLeaders;
+  } else  if (leaderBoardDeter === "hard"){
+    leadersArr = props.hardLeaders;
+  }
+
+  function switchLeaderboard(e){
+
+    if(e.target.id === "easy"){
+      props.setLeaderboardSelect("easy");
+      props.easyLeaderBoardRef.current.className = "selected";
+      props.normalLeaderBoardRef.current.className = "";
+      props.hardLeaderBoardRef.current.className = ""
+
+    } else if (e.target.id === "normal"){
+      props.setLeaderboardSelect("normal");
+      props.easyLeaderBoardRef.current.className = "";
+      props.normalLeaderBoardRef.current.className = "selected";
+      props.hardLeaderBoardRef.current.className = ""
+
+    } else if (e.target.id === "hard"){
+      props.setLeaderboardSelect("hard");
+      props.easyLeaderBoardRef.current.className = "";
+      props.normalLeaderBoardRef.current.className = "";
+      props.hardLeaderBoardRef.current.className = "selected"
+      
+    }
+  }
+  let leadersArrSorted = leadersArr.sort((a, b) => parseFloat(a.time) - parseFloat(b.time));
+  if(leadersArrSorted.length >= 10){
+    leadersArrSorted = leadersArrSorted.slice(0,10);
+  }
+
+  let tableItems;
+  if(leadersArrSorted.length === 0){
+    tableItems = <tr><td colSpan={3}>None so far</td></tr>
+  } else {
+    tableItems = leadersArrSorted.map(val => <tr><td>{bil++}</td><td>{val.username}</td><td>{val.time}s</td></tr>);
+  }
+
   return <div id="leaderboard" className="hide" ref={props.leaderboardRef}>
     <h2>Local Leaderboard</h2>
+    <button onClick={e => switchLeaderboard(e)} id="easy" className="selected" ref={props.easyLeaderBoardRef}>Easy</button>
+    <button onClick={e => switchLeaderboard(e)} id="normal" ref={props.normalLeaderBoardRef}>Normal</button>
+    <button onClick={e => switchLeaderboard(e)} id="hard" ref={props.hardLeaderBoardRef}>Hard</button>
+    <br/>
+    <table>
+      <tr>
+        <th>No.</th>
+        <th>Username</th>
+        <th>Time</th>
+      </tr>
+      {tableItems}
+      </table>
     <button onClick={() => {props.leaderboardToResult()}}>Return</button>
   </div>;
 }
 
 
 function App(){
+
+  let [easyLeaders, setEasyLeaders] = useState(JSON.parse(localStorage.getItem("zum_number_guessing_easy_leaders")) || []);
+  localStorage.setItem("zum_number_guessing_easy_leaders", JSON.stringify(easyLeaders));
+
+  let [normalLeaders, setNormalLeaders] = useState(JSON.parse(localStorage.getItem("zum_number_guessing_normal_leaders")) || []);
+  localStorage.setItem("zum_number_guessing_normal_leaders", JSON.stringify(normalLeaders));
+
+  let [hardLeaders, setHardLeaders] = useState(JSON.parse(localStorage.getItem("zum_number_guessing_hard_leaders")) || []);
+  localStorage.setItem("zum_number_guessing_hard_leaders", JSON.stringify(hardLeaders));
+
+  let [leaderboardSelect, setLeaderboardSelect] = useState("easy");
 
   let [username, setUsername] = useState("");
   function changeUsername(e){setUsername(e.target.value)}
@@ -60,7 +128,8 @@ function App(){
   let [resultResponse, setResultResponse] = useState("");
 
   let [timeTaken, setTimeTaken] = useState(0);
-  let [isRecording, setIsRecording] = useState(false);
+  let [recordedTime, setRecordedTime] = useState(0);
+
 
   function reset(){
     setDifficulty("");
@@ -70,6 +139,7 @@ function App(){
     setRandomNumber(0);
     setHint("Guess The Number!");
     setChances(10);
+    setRecordedTime(0);
     limitBeforeRef.current.style.flex = 0;
     rangeRef.current.style.flex = 100 + "%";
     limitAfterRef.current.style.flex = 0;
@@ -124,6 +194,10 @@ function App(){
     limitAfterRef.current.style.flex = difficultyValue - maxRange + "%";
   }
 
+  let easyLeaderBoardRef = useRef();
+  let normalLeaderBoardRef = useRef();
+  let hardLeaderBoardRef = useRef();
+
 
   return <div id="container">
 
@@ -161,6 +235,15 @@ function App(){
     updateRange={updateRange}
     timeTaken={timeTaken}
     setTimeTaken={setTimeTaken}
+    setRecordedTime={setRecordedTime}
+    setDifficulty={setDifficulty}
+    easyLeaders={easyLeaders}
+    setEasyLeaders={setEasyLeaders}
+    normalLeaders={normalLeaders}
+    setNormalLeaders={setNormalLeaders}
+    hardLeaders={hardLeaders}
+    setHardLeaders={setHardLeaders}
+    username={username}
     />
     <Result 
     randomNumber={randomNumber} 
@@ -169,12 +252,20 @@ function App(){
     resultToMain={resultToMain}
     reset={reset}
     resultToLeaderBoard={resultToLeaderBoard}
-    timeTaken={timeTaken}/>
+    timeTaken={timeTaken}
+    recordedTime={recordedTime}/>
 
     <Leaderboard 
     leaderboardRef={leaderboardRef}
     leaderboardToResult={leaderboardToResult}
-
+    easyLeaders={easyLeaders}
+    normalLeaders={normalLeaders}
+    hardLeaders={hardLeaders}
+    leaderboardSelect={leaderboardSelect}
+    setLeaderboardSelect={setLeaderboardSelect}
+    easyLeaderBoardRef={easyLeaderBoardRef}
+    normalLeaderBoardRef={normalLeaderBoardRef}
+    hardLeaderBoardRef={hardLeaderBoardRef}
     />
     
   </div>
